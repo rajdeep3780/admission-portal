@@ -84,3 +84,6 @@ app.get("/admin", (req, res) => {
   res.send(html);
 });
 app.use(express.urlencoded({ extended: true }));
+app.get("/payment", (req, res) => {
+  res.sendFile(__dirname + "/payment.html");
+});

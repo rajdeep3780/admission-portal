@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment</title>
+</head>
+<body style="text-align:center; font-family:sans-serif">
+
+  <h2>Pay ₹500 Admission Fees</h2>
+
+  <p>UPI ID: rajdeep@upi</p>
+
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=rajdeep@upi&pn=Rajdeep&am=500">
+
+  <br><br>
+
+  <button onclick="done()">I Have Paid ✅</button>
+
+  <script>
+    function done() {
+      localStorage.setItem("paid", "yes");
+      window.location.href = "/";
+    }
+  </script>
+
+</body>
+</html>

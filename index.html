@@ -25,19 +25,21 @@
       </button>
       
     </form>
-    <h3>Pay ₹500 via UPI</h3>
+    <button type="button" onclick="goToPayment()">Pay Fees</button>
 
-    <p>UPI ID: rajdeep37800@ptyes</p>
-
-    <img src="https://res.cloudinary.com/dlt2s4f50/image/upload/v1776530875/WhatsApp_Image_2026-04-15_at_10.19.57_fdynor.jpg" height="25px" style="text-align: center;">
-
-    <br><br>
-
-    <input type="file" name="proof" />
-    
-    <form action="/submit" method="POST">
-        <button type="submit">Submit Payment Proof</button>
-    </form>
+<script>
+function goToPayment() {
+  window.location.href = "/payment";
+}
+</script>
+<script>
+document.querySelector("form").addEventListener("submit", function(e) {
+  if (localStorage.getItem("paid") !== "yes") {
+    alert("Pehle payment karo!");
+    e.preventDefault();
+  }
+});
+</script>
   </div>
 
 </body>
