@@ -83,3 +83,4 @@ app.get("/admin", (req, res) => {
 
   res.send(html);
 });
+app.use(express.urlencoded({ extended: true }));
