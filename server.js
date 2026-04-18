@@ -17,9 +17,9 @@ app.get("/", (req, res) => {
 // Form submit
 app.post("/submit", (req, res) => {
   const { name, email, course } = req.body;
-
+  students.push({ name, email, course });
   let transporter = nodemailer.createTransport({
-    service: "gmail",
+  service: "gmail",
     auth: {
       user: "rajdeep3780@gmail.com",
       pass: "zpet vond tojo igrs"
@@ -73,7 +73,7 @@ app.post("/login", (req, res) => {
   }
 });
 let students = [];
-students.push({ name, email, course });
+
 app.get("/admin", (req, res) => {
   let html = "<h2>All Admissions</h2>";
 
