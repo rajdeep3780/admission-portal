@@ -83,17 +83,3 @@ app.get("/admin", (req, res) => {
 
   res.send(html);
 });
-const Razorpay = require("razorpay");
-
-const razorpay = new Razorpay({
-  key_id: "YOUR_KEY",
-  key_secret: "YOUR_SECRET"
-});
-app.get("/pay", async (req, res) => {
-  const order = await razorpay.orders.create({
-    amount: 50000, // ₹500
-    currency: "INR"
-  });
-
-  res.json(order);
-});

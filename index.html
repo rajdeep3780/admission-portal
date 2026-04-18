@@ -25,33 +25,16 @@
       </button>
       
     </form>
-    <button onclick="payNow()">Pay Fees</button>
+    <h3>Pay ₹500 via UPI</h3>
 
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <p>UPI ID: rajdeep@upi</p>
 
-<script>
-async function payNow() {
-  console.log("clicked"); // test
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=rajdeep@upi&pn=Rajdeep&am=500">
 
-  const res = await fetch('/pay');
-  const data = await res.json();
+    <br><br>
 
-  var options = {
-    key: "YOUR_KEY",
-    amount: data.amount,
-    currency: "INR",
-    order_id: data.id,
-    name: "Admission Fees",
-    description: "Payment",
-    handler: function (response){
-      alert("Payment Success ✅");
-    }
-  };
-
-  var rzp = new Razorpay(options);
-  rzp.open();
-}
-</script>
+    <input type="file" name="proof" />
+    <button>Submit Payment Proof</button>
   </div>
 
 </body>
