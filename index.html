@@ -9,7 +9,7 @@
   <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl w-96">
     <h1 class="text-2xl font-bold text-center mb-6">🎓 Admission Form</h1>
 
-    <form action="/submit" method="POST" class="flex flex-col gap-4">
+    <form id="admissionForm">
       <input type="text" name="name" placeholder="Your Name" required
         class="p-3 rounded bg-gray-700 outline-none">
 
@@ -19,26 +19,24 @@
       <input type="text" name="course" placeholder="Course" required
         class="p-3 rounded bg-gray-700 outline-none">
 
-      <button type="submit"
-        class="bg-green-400 text-black font-bold py-2 rounded hover:bg-green-300 transition">
-        Apply Now 🚀
-      </button>
+      <button type="button" onclick="goToPayment()">Apply</button>
       
     </form>
-    <button type="button" onclick="goToPayment()">Pay Fees</button>
+    
 
 <script>
 function goToPayment() {
+  // form data save kar lo temporarily
+  const form = document.getElementById("admissionForm");
+  const formData = new FormData(form);
+
+  localStorage.setItem("name", formData.get("name"));
+  localStorage.setItem("email", formData.get("email"));
+  localStorage.setItem("course", formData.get("course"));
+
+  // payment page pe bhej do
   window.location.href = "/payment";
 }
-</script>
-<script>
-document.querySelector("form").addEventListener("submit", function(e) {
-  if (localStorage.getItem("paid") !== "yes") {
-    alert("Pehle payment karo!");
-    e.preventDefault();
-  }
-});
 </script>
   </div>
 

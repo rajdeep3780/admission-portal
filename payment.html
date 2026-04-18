@@ -13,7 +13,33 @@
 
   <br><br>
 
-  <button onclick="done()">I Have Paid ✅</button>
+  <button onclick="completePayment()">I Have Paid ✅</button>
+
+<script>
+function completePayment() {
+  // payment done mark karo
+  localStorage.setItem("paid", "yes");
+
+  // backend ko data bhejo
+  fetch("/submit", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      name: localStorage.getItem("name"),
+      email: localStorage.getItem("email"),
+      course: localStorage.getItem("course"),
+      paid: "yes"
+    })
+  })
+  .then(res => res.text())
+  .then(data => {
+    alert(data);
+    window.location.href = "/";
+  });
+}
+</script>
 
   <script>
     function done() {
