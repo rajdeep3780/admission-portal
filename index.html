@@ -1,44 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <style>
-    body {
-      font-family: Arial;
-      background: #111;
-      color: white;
-      text-align: center;
-    }
-
-    form {
-      margin-top: 50px;
-    }
-
-    input, button {
-      padding: 10px;
-      margin: 10px;
-      width: 250px;
-      border-radius: 5px;
-      border: none;
-    }
-
-    button {
-      background: #00ffcc;
-      cursor: pointer;
-    }
-  </style>
-  <title>Admission Form</title>
+  <title>Admission Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gradient-to-r from-black to-gray-900 text-white flex items-center justify-center h-screen">
 
-  <h2>Admission Form</h2>
+  <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl w-96">
+    <h1 class="text-2xl font-bold text-center mb-6">🎓 Admission Form</h1>
 
-  <form action="/submit" method="POST">
-    <input type="text" name="name" placeholder="Name" required><br><br>
-    <input type="email" name="email" placeholder="Email" required><br><br>
-    <input type="text" name="course" placeholder="Course" required><br><br>
+    <form action="/submit" method="POST" class="flex flex-col gap-4">
+      <input type="text" name="name" placeholder="Your Name" required
+        class="p-3 rounded bg-gray-700 outline-none">
 
-    <button type="submit">Apply</button>
-  </form>
+      <input type="email" name="email" placeholder="Your Email" required
+        class="p-3 rounded bg-gray-700 outline-none">
+
+      <input type="text" name="course" placeholder="Course" required
+        class="p-3 rounded bg-gray-700 outline-none">
+
+      <button type="submit"
+        class="bg-green-400 text-black font-bold py-2 rounded hover:bg-green-300 transition">
+        Apply Now 🚀
+      </button>
+    </form>
+  </div>
 
 </body>
 </html>

@@ -1,3 +1,8 @@
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log("Server running...");
+});
 const express = require("express");
 const bodyParser = require("body-parser");
 const nodemailer = require("nodemailer");
