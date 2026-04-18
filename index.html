@@ -28,8 +28,11 @@
     <button onclick="payNow()">Pay Fees</button>
 
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
 <script>
 async function payNow() {
+  console.log("clicked"); // test
+
   const res = await fetch('/pay');
   const data = await res.json();
 
@@ -38,6 +41,8 @@ async function payNow() {
     amount: data.amount,
     currency: "INR",
     order_id: data.id,
+    name: "Admission Fees",
+    description: "Payment",
     handler: function (response){
       alert("Payment Success ✅");
     }
