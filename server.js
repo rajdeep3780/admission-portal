@@ -51,3 +51,49 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server running...");
 });
+const ADMIN_USER = "admin";
+const ADMIN_PASS = "1234";
+app.get("/login", (req, res) => {
+  res.send(`
+    <h2>Admin Login</h2>
+    <form method="POST" action="/login">
+      <input name="username" placeholder="Username" required/>
+      <input name="password" type="password" placeholder="Password" required/>
+      <button>Login</button>
+    </form>
+  `);
+});
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  if (username === ADMIN_USER && password === ADMIN_PASS) {
+    res.redirect("/admin");
+  } else {
+    res.send("Wrong credentials ❌");
+  }
+});
+let students = [];
+students.push({ name, email, course });
+app.get("/admin", (req, res) => {
+  let html = "<h2>All Admissions</h2>";
+
+  students.forEach(s => {
+    html += `<p>${s.name} - ${s.email} - ${s.course}</p>`;
+  });
+
+  res.send(html);
+});
+const Razorpay = require("razorpay");
+
+const razorpay = new Razorpay({
+  key_id: "YOUR_KEY",
+  key_secret: "YOUR_SECRET"
+});
+app.get("/pay", async (req, res) => {
+  const order = await razorpay.orders.create({
+    amount: 50000, // ₹500
+    currency: "INR"
+  });
+
+  res.json(order);
+});
